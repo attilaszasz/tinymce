@@ -26,6 +26,7 @@ const html2bbcode = function (s) {
   rep(/<span style=\"text-decoration: underline; color: ?(.*?);\">(.*?)<\/span>/gi, '[u][color=$1]$2[/color][/u]');
   rep(/<span style=\"color: ?(.*?);\">(.*?)<\/span>/gi, '[color=$1]$2[/color]');
   rep(/<font.*?color=\"(.*?)\".*?>(.*?)<\/font>/gi, '[color=$1]$2[/color]');
+  rep(/<span class=\"(.*?)\">(.*?)<\/span>/gi, '[class=$1]$2[/class]');
   rep(/<span style=\"font-size:(.*?);\">(.*?)<\/span>/gi, '[size=$1]$2[/size]');
   rep(/<p style=\"text-align: center;\">(.*?)<\/p>/gi, '[center]$1[/center]');
   rep(/<p style=\"text-align: center;\">(.*?)\n/gi, '[center]$1[/center]\n');
@@ -130,6 +131,7 @@ const bbcode2html = function (s) {
   rep(/\[url\](.*?)\[\/url\]/gi, '<a href="$1">$1</a>');
   rep(/\[img\](.*?)\[\/img\]/gi, '<img src="$1" />');
   rep(/\[color=(.*?)\](.*?)\[\/color\]/gi, '<font color="$1">$2</font>');
+  rep(/\[class=(.*?)\](.*?)\[\/class\]/gi, '<span class="$1">$2</span>');
   rep(/\[code\](.*?)\[\/code\]/gi, '<span class="codeStyle">$1</span>&nbsp;');
 
   rep(/\[center\]\[size=30\](.*?)\[\/size\]\[\/center\]/gi, '<h1 style="text-align: center;">$1</h1>');
